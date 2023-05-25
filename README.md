@@ -45,13 +45,13 @@ py manage.py runserver
 http://127.0.0.1:8000/
 ```
 ## UML Diagrams
-![image](https://github.com/jisachet/Bikesmart/assets/75719262/c4be13e5-8488-4073-bfb6-a02d7338dbbc)
+![image](https://github.com/jisachet/Bikesmart/assets/75719262/c4be13e5-8488-4073-bfb6-a02d7338dbbc)  
 Fig.: Use Case Diagram  
-![image](https://github.com/jisachet/Bikesmart/assets/75719262/1f8a8354-be29-4f91-b61b-1d73591d09d5)
+![image](https://github.com/jisachet/Bikesmart/assets/75719262/1f8a8354-be29-4f91-b61b-1d73591d09d5)  
 Fig.: Data Flow Diagram  
-![image](https://github.com/jisachet/Bikesmart/assets/75719262/70b6f20a-736c-483c-a669-c63abd1cf0ce)
+![image](https://github.com/jisachet/Bikesmart/assets/75719262/70b6f20a-736c-483c-a669-c63abd1cf0ce)  
 Fig.: Sequence Diagram  
-![image](https://github.com/jisachet/Bikesmart/assets/75719262/2d4fb8c0-630f-43ba-8536-6ec3f79d6525)
+![image](https://github.com/jisachet/Bikesmart/assets/75719262/2d4fb8c0-630f-43ba-8536-6ec3f79d6525)  
 Fig.: ER Diagram  
 
 
