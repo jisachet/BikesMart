@@ -1,4 +1,4 @@
-# BBikesmart
+# Bikesmart
 ## FUNCTIONS
 ## Customer
 - Customer can view/search products without login.
