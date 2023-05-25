@@ -1,0 +1,47 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <br>
+  {%include 'ecom/admin_dashboard_cards.html'%}
+  <br><br><br><br><br>
+</head>           
+<br><br><br>
+<div class="container" >
+  <div class="row">
+    <div class="col-md=12">
+     <div class="panel panel-primary" >
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Total Customer List</h6>
+      </div>
+      <table class="table mx-auto d-block" id="dev-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Profile Picture</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+      {% for c in customers %}
+          <tr>
+            <td class="col-12 col-sm-4 col-md-4"> {{c.get_name}}</td>
+            <td class="col-12 col-sm-4 col-md-4"> <img src="{% static c.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+            <td class="col-12 col-sm-4 col-md-4">{{c.mobile}}</td>
+            <td class="col-12 col-sm-4 col-md-4">{{c.address}}</td>
+            <td class="col-12 col-sm-4 col-md-4"><a class="btn btn-primary btn-xs" href="{% url 'update-customer' c.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td class="col-12 col-sm-4 col-md-4"><a class="btn btn-danger btn-xs" href="{% url 'delete-customer' c.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

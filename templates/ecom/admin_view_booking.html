@@ -1,0 +1,59 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <br>
+  {%include 'ecom/admin_dashboard_cards.html'%}
+  <br><br><br><br><br>
+</head>
+<br><br><br>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-12">
+     <div class="panel panel-primary" >
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title" style="text-align:center;">Total Orders</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+          <thead>
+            <tr>
+              <th>Customer Name</th>
+              <th>Customer Mobile</th>
+              <th>Shipment Address</th>
+              <th>Product Name</th>
+              <th>Product Picture</th>
+              <th>Status</th>
+              <th>Update Status</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+      <!-- p for product, c for customer-->
+      {% for product,customer,order in data %}
+            <tr>
+              {% for c in customer %}
+              <td> {{c.get_name}}</td>
+              <td>{{c.mobile}}</td>
+              <td>{{order.address}}</td>
+              {% endfor %}
+              {% for p in product %}
+              <td> {{p.name}}</td>
+              <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+              <td>{{order.status}}</td>
+              <td><a class="btn btn-primary btn-xs" href="{% url 'update-order' order.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+              <td><a class="btn btn-danger btn-xs" href="{% url 'delete-order' order.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+              {% endfor %}
+            </tr>
+      {% endfor %}
+      </table>
+     </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
