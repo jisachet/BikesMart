@@ -64,4 +64,5 @@ Fig.: ER Diagram
 
 ## Feedback
 Any suggestion and feedback is welcome. You can message me on teams.
+- [Teams](https://teams.microsoft.com/_#/conversations/48:notes?ctx=chat)
 - [Contact on Facebook](https://fb.com/jisachet4)
