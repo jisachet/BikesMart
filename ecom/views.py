@@ -224,7 +224,8 @@ def add_to_cart_view(request,pk):
     else:
         product_count_in_cart=1
 
-    response = render(request, 'ecom/index.html',{'products':products,'product_count_in_cart':product_count_in_cart})
+    response = redirect('/customer-home')
+    # render(request, 'ecom/index.html',{'products':products,'product_count_in_cart':product_count_in_cart})
 
     #adding product id to cookies
     if 'product_ids' in request.COOKIES:
@@ -238,7 +239,7 @@ def add_to_cart_view(request,pk):
         response.set_cookie('product_ids', pk)
 
     product=models.Product.objects.get(id=pk)
-    messages.info(request, product.name + ' added to cart successfully!')
+    # messages.info(request, product.name + ' added to cart successfully!')
 
     return response
 
@@ -294,7 +295,8 @@ def remove_from_cart_view(request,pk):
                 value=value+product_id_in_cart[0]
             else:
                 value=value+"|"+product_id_in_cart[i]
-        response = render(request, 'ecom/cart.html',{'products':products,'total':total,'product_count_in_cart':product_count_in_cart})
+        response =  redirect('/cart')
+        # render(request, 'ecom/cart.html',{'products':products,'total':total,'product_count_in_cart':product_count_in_cart})
         if value=="":
             response.delete_cookie('product_ids')
         response.set_cookie('product_ids',value)
@@ -309,6 +311,19 @@ def send_feedback_view(request):
             feedbackForm.save()
             return render(request, 'ecom/feedback_sent.html')
     return render(request, 'ecom/send_feedback.html', {'feedbackForm':feedbackForm})
+
+def remove_from_feedback(request,pk):
+    feedbacks=models.Feedback.objects.get(id=pk)
+    feedbacks.delete()
+    # feedbackForm=forms.FeedbackForm()
+    # if request.method == 'POST':
+    #     feedbackForm = forms.FeedbackForm(request.POST)
+    #     if feedbackForm.is_valid():
+    #         feedbackForm.save()
+    #         return render(request, 'ecom/feedback_sent.html')
+    return redirect('view-feedback')
+# render(request, 'ecom/send_feedback.html', {'feedbackForm':feedbackForm})
+
 
 #---------------------------------------------------------------------------------
 #------------------------ CUSTOMER RELATED VIEWS START ------------------------------
