@@ -1,76 +1,12 @@
-{% comment %} {% extends 'ecom/homebase.html' %}
+{% extends 'ecom/homebase.html' %}
 {% load static %}
 {% block content %}
 <br><br><br>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <img src="{% static "images/logout_img.png" %}"  style="width:800px; height:100px; padding-left:400px;">
 
 <br><br><br><br><br>
 <br><br><br><br><br>
 <br><br><br>
-{% endblock content %} {% endcomment %}
 
 
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">BikesMart</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/adminclick">Admin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/customerlogin">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/aboutus">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contactus">Contact Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/send-feedback">Send Feedback</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</body>
-<body>
-  <div class="jumbotron">
-    <h1>Welcome to BikesMart</h1>
-    <p>BikesMart is a bike store and parts with blog which is committed to providing our customers trustworthy motercycles and its parts of the best quality.</p>
-    <a class="btn btn-primary btn-lg" href="/customerlogin" role="button">Shop Now</a>
-  </div>
-</body>
-
-<footer class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <ul class="list-inline text-center social-media-icons">
-          <a href="https://www.facebook.com/profile.php?id=100091049813458"><i class="fa fa-facebook-f"></i></a></li>
-          <a href="https://twitter.com/YourPage"><i class="fab fa-twitter"></i></a></li>
-          <a href="https://www.instagram.com/YourPage"><i class="fab fa-instagram"></i></a></li>
-          <a href="https://www.linkedin.com/company/YourPage"><i class="fab fa-linkedin"></i></a></li>
-        </ul>
-        <p align="center">&copy; 2023 BikesMart. All Rights Reserved.</p>
-      </div>
-    </div>
-  </div>
-</footer>
-</html>
+{% endblock content %}

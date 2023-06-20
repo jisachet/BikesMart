@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
+from django.contrib import messages
+
 # Create your views here.
 
 def home_view(request):
@@ -51,6 +53,7 @@ def is_customer(user):
 
 #---------AFTER ENTERING CREDENTIALS WE CHECK WHETHER USERNAME AND PASSWORD IS OF ADMIN,CUSTOMER
 def afterlogin_view(request):
+
     if is_customer(request.user):
         return redirect('customer-home')
     else:

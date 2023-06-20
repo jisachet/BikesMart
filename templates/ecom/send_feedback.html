@@ -150,7 +150,8 @@
 </head>
 <title>Send Feedback</title>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  {% include "ecom/navbar.html" %}
+  {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">BikesMart</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -177,7 +178,7 @@
         </li>
       </ul>
     </div>
-  </nav>
+  </nav> {% endcomment %}
 </body>
  
 <center>
@@ -199,18 +200,5 @@
 </center>
 
 <br><br><br>
-  <footer class="bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="list-inline text-center social-media-icons">
-            <a href="https://www.facebook.com/profile.php?id=100091049813458"><i class="fa fa-facebook-f"></i></a></li>
-            <a href="https://twitter.com/YourPage"><i class="fab fa-twitter"></i></a></li>
-            <a href="https://www.instagram.com/YourPage"><i class="fab fa-instagram"></i></a></li>
-            <a href="https://www.linkedin.com/company/YourPage"><i class="fab fa-linkedin"></i></a></li>
-          </ul>
-          <p align="center">&copy; 2023 BikesMart. All Rights Reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+ {% include "ecom/footer.html" %}
+ </html>

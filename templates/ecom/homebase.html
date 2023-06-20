@@ -1,4 +1,4 @@
-{% comment %} {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <title>Bile Store and Blog</title>
+  <title>BiKe Store and Blog</title>
 
 </head>
 
@@ -25,64 +25,7 @@
 
   {%endblock content%}
 
-  
+
   {% include "ecom/footer.html" %}
 </body>
-</html> {% endcomment %}
-
-
-
-
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-  {%if request.user.is_authenticated%}
-  {% include "ecom/customer_navbar.html" %}
-{%else%}
-  {% include "ecom/navbar.html" %}
-{%endif%}
-
-
-{%block content%}
-
-{%endblock content%}
-</body>
-
-<body>
-  <div class="jumbotron">
-    <h1>Welcome to our Ecommerce Website</h1>
-    <p>Shop for the latest products and get great deals</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Shop Now</a>
-  </div>
-</body>
-
-
-<body>
-  <div class="container">
-    <h2>Featured Products</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img class="card-img-top" src="product1.jpg" alt="Product 1">
-          <div class="card-body">
-            <h4 class="card-title">Product 1</h4>
-            <p class="card-text">$19.99</p>
-            <a href="#" class="btn btn-primary">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md
-
-
-
-      
-</body>
-{% include "ecom/footer.html" %}
 </html>
