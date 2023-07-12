@@ -5,6 +5,10 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Blog
 
 # Create your views here.
 
@@ -467,3 +471,39 @@ def edit_profile_view(request):
 #---------------------------------------------------------------------------------
 def aboutus_view(request):
     return render(request,'ecom/aboutus.html')
+
+
+
+def blog_view(request):
+    #for blogs
+    blogs = Blog.objects.all()
+    return render(request,'ecom/blog.html',{'blogs':blogs})
+
+
+
+def Postblog_view(request):
+    #for blogs
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        image = request.FILES.get('image')
+        post = Blog.objects.create(author=request.user, title=title, content=content, image=image)
+        return redirect('/blogs', pk=post.pk)
+    else:
+        return render(request,'ecom/Postblog.html')
+
+
+
+# admin
+
+def admin_blog_view(request):
+    #for admin view blogs
+    blogs = Blog.objects.all()
+    return render(request,'ecom/admin_blog.html',{'blogs':blogs})
+
+
+@login_required(login_url='adminlogin')
+def delete_blog(request, pk):
+    blog = get_object_or_404(Blog, pk=pk)
+    blog.delete()
+    return redirect('/admin-blog')

@@ -1,119 +1,271 @@
-{% extends 'ecom/homebase.html' %}
+
+<!--{% load static %}-->
+<!--{% block content %}-->
+<!DOCTYPE html>
 {% load static %}
-{% block content %}
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>BikesMart</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="static/admin/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="static/admin/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+      <!-- font awesome -->
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--  -->
+      <!-- owl stylesheets -->
+      <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesoeet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   <style>
+   .add-to-cart {
+      text-align: center;
+   }
 
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<style media="screen">
-  .button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-.button2 {
-  background-color: white;
-  color: black;
-  border: 2px solid #008CBA;
-}
-
-.button2:hover {
-  background-color: #008CBA;
-  color: white;
-}
-background-color: #ebe0e0
-
+   .add-to-cart .txt {
+      font-weight: bold;
+   }
 </style>
 
-</head>
-<br><br><br><br>
 
-<div class="container" style="height:42vh;">
+
+   </head>
+   <body>
+      <!-- banner bg main start -->
+      <div class="banner_bg_main">
+         <!-- header top section start -->
+         <div class="container">
+            <div class="header_section_top">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="custom_menu">
+                        <ul>
+                            {% if user.is_authenticated %}
+                                <li><a href="/my-profile">Hello {{request.user}} !</a></li>
+                              {% else %}
+                                <li><a href="/">BikesMart</a></li>
+                              {% endif %}
+                            {% if user.is_authenticated %}
+                            <li><a href="/my-order">My Orders</a></li>
+                           {% endif %}
+                           <li><a href="/blogs">Blogs</a></li>
+                           <li><a href="/send-feedback">Send Feedbacks</a></li>
+                           <li><a href="/aboutus">About Us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div><br><br><br>
+         <!-- header top section start -->
+         <!-- header section start -->
+         <div class="header_section">
+            <div class="container">
+               <div class="containt_main">
+
+                  <div class="dropdown">
+   {% if user.is_authenticated %}
+      <a href="/logout" class="btn btn-secondary">Logout</a>
+   {% else %}
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Login/Signup
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+         <a class="dropdown-item" href="/customerlogin">Login</a>
+         <a class="dropdown-item" href="/customersignup">Signup</a>
+      </div>
+   {% endif %}
+</div>
+
+                  <div class="main">
+                     <!-- Another variation with a button -->
+                     <form action="/search" method="get">
+                     <div class="input-group">
+                           <input type="text" class="form-control" type="search" placeholder="Search for Products and more..." name="query" id="query">
+
+                           <div class="input-group-append">
+                              <button class="btn btn-secondary" type="submit" style="background-color: #f26522; border-color:#f26522 ">
+                                 <i class="fa fa-search"></i>
+                              </button>
+                           </div>
+                     </div>
+                     </form>
+                  </div>
+<!--                  <div class="header_box">-->
+<!--                     <div class="login_menu">-->
+<!--                        <ul>-->
+<!--                           <li><a href="/cart">-->
+<!--                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>-->
+<!--                              <span class="padding_10">Cart {{ product_count_in_cart }}</span></a>-->
+<!--                           </li>-->
+<!--&lt;!&ndash;                           <li><a href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                              <i class="fa fa-user" aria-hidden="true"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <span class="padding_10">Ca</span></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                           </li>&ndash;&gt;-->
+<!--                        </ul>-->
+<!--                     </div>-->
+<!--                  </div>-->
+               </div>
+            </div>
+         </div>
+         <!-- header section end -->
+<!--<script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>-->
+<head>
+        <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+</head>
+<body>
+<!--start of main content-->
+<br>
+<div class="fashion_section_2">
+<div class="container" style="height: 42vh;">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 style="text-align:center;" class="panel-title">My Cart</h6>
+      <h3 class="panel-title text-center text-white"><b>My Cart</b></h3>
     </div>
-    <table class="table table-hover" id="dev-table">
+    <table class="table table-light" id="dev-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Image</th>
-          <th>Price</th>
-          <th>Description</th>
-          <th>Remove From Cart</th>
-
+          <th class="text-center">Name</th>
+          <th class="text-center">Image</th>
+          <th class="text-center">Price</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Remove From Cart</th>
         </tr>
       </thead>
-      {% for p in products %}
-  {% if p %}
-
-      <tr>
-        <td> {{p.name}}</td>
-        <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-        <td>{{p.price}}</td>
-        <td>{{p.description}}</td>
-
-        <td><a class="btn btn-danger btn-xs" href="{% url 'remove-from-cart' p.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
-
-      </tr>
-      {%else%}
-      <br><br><br>
-      <h1>no products</h1>
-      {% endif %}
-      {% endfor %}
+      <tbody>
+        {% for p in products %}
+          {% if p %}
+            <tr>
+              <td class="text-center" style="font-size: 14px; font-weight: bold;">{{ p.name }}</td>
+              <td class="text-center"><img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+              <td class="text-center" style="font-size: 14px;">{{ p.price }}</td>
+              <td class="text-center" style="font-size: 14px;">{{ p.description }}</td>
+              <td class="text-center">
+                <a class="btn btn-danger btn-xs" href="{% url 'remove-from-cart' p.id  %}">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="5">
+                <h1 class="text-center">No products</h1>
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
     </table>
   </div>
-  <div style="display: flex;justify-content: center;">
-    
-  <button class="button button2">Total {{total}}</button>
-  <a href="#"><button class="button" ><span>Purchase </span></button></a>
+  <div class="d-flex justify-content-center my-3">
+    <button class="btn btn-secondary mx-2">Total {{ total }}</button>
+    <button id="payment-button" class="btn btn-primary mx-2">Pay with Khalti</button>
   </div>
 </div>
-<br><br><br>
-<div style="text-align: center;">
-  
-<!--   <a href="/customer-address"><button class="button" ><span>Purchase </span></button></a>
 </div>
 
 
-<br><br><br><br><br>
 
-{% endblock content %}
+<script>
+        var config = {
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_937ea8936b154d9ebbbe77f63dc0bcd2",
+            "productIdentity": "1234567890",
+            "productName": "Dragon",
+            "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+            "paymentPreference": [
+                "KHALTI",
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                    console.log(payload);
+                },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({amount: 1000});
+        }
+    </script>
+<br><br><br>
+<!--   <a href="/customer-address"><button class="button" ><span>Purchase </span></button></a>
+</div>-->
+<br><br><br><br><br>
+<!--{% endblock content %}-->
+</body>
+<!----end of main content----->
+<!-- footer section start -->
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="footer_menu">
+               <ul>
+                  <li><a href="/aboutus">About Us</a></li>
+                  <li><a href="/sendfeedback">Send Feedbacks</a></li>
+                  <li><a href="/">Blogs</a></li>
+               </ul>
+            </div>
+            <div class="location_main">9823456789,9803214569 <br> <a href="#">info@bikesmart.com</a></div>
+         </div>
+      </div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <p class="copyright_text">Copyright @{% load copyrighttags %}
+               {% getCopyrightYears %} All Right Reserved. <a href="https://www.facebook.com/profile.php?id=100091049813458">BikesMart</a></p>
+         </div>
+      </div>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      <script src="{% static 'admin/js/jquery.min.js' %}"></script>
+      <script src="{% static 'admin/js/popper.min.js' %}"></script>
+      <script src="{% static 'admin/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'admin/js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'admin/js/plugin.js' %}"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script>
+         function openNav() {
+           document.getElementById("mySidenav").style.width = "250px";
+         }
+
+         function closeNav() {
+           document.getElementById("mySidenav").style.width = "0";
+         }
+      </script>
+
+
+
+</html>

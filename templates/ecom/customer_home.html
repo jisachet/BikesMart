@@ -1,381 +1,253 @@
-{% extends 'ecom/customer_base.html' %}
+<!DOCTYPE html>
 {% load static %}
-{% block content %}
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>BikesMart</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="static/admin/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="static/admin/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif"/>
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  -->
+    <!-- owl stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesoeet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+          media="screen">
+    <style>
+   .add-to-cart {
+      text-align: center;
+   }
+
+   .add-to-cart .txt {
+      font-weight: bold;
+   }
+
+    </style>
 
 
-
-  <style media="screen">
-    body,
-html {
-  height: 100%;
-}
-
-.d-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.align-center {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.flex-centerY-centerX {
-  justify-content: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-body {
-  background-color:#8c9eff;
-}
-
-.page-wrapper {
-  height: 100%;
-  display: table;
-}
-
-.page-wrapper .page-inner {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.el-wrapper {
-  width: 345px;
-  padding: 15px;
-  margin: 5px auto;
-  background-color: #bc7c73;
-}
-
-@media (max-width: 991px) {
-  .el-wrapper {
-    width: 800px;
-  }
-}
-
-@media (max-width: 767px) {
-  .el-wrapper {
-    width: 290px;
-    margin: 30px auto;
-  }
-}
-
-.el-wrapper:hover .h-bg {
-  left: 0px;
-}
-
-.el-wrapper:hover .price {
-  left: 20px;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  color: #bc7c73;
-}
-
-.el-wrapper:hover .add-to-cart {
-  left: 50%;
-}
-
-.el-wrapper:hover .img {
-  webkit-filter: blur(7px);
-  -o-filter: blur(7px);
-  -ms-filter: blur(7px);
-  filter: blur(7px);
-  filter: progid:DXImageTransform.Microsoft.Blur(pixelradius='7', shadowopacity='0.0');
-  opacity: 0.4;
-}
-
-.el-wrapper:hover .info-inner {
-  bottom: 155px;
-}
-
-.el-wrapper:hover .a-size {
-  -webkit-transition-delay: 300ms;
-  -o-transition-delay: 300ms;
-  transition-delay: 300ms;
-  bottom: 50px;
-  opacity: 1;
-}
-
-.el-wrapper .box-down {
-  width: 100%;
-  height: 60px;
-  position: relative;
-  overflow: hidden;
-}
-
-.el-wrapper .box-up {
-  width: 100%;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.el-wrapper .img {
-  padding: 20px 0;
-  -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-}
-
-.h-bg {
-  -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  width: 660px;
-  height: 100%;
-  background-color: #3f96cd;
-  position: absolute;
-  left: -659px;
-}
-
-.h-bg .h-bg-inner {
-  width: 50%;
-  height: 100%;
-  background-color: #464646;
-}
-
-.info-inner {
-  -webkit-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  position: absolute;
-  width: 100%;
-  bottom: 25px;
-}
-
-.info-inner .p-name,
-.info-inner .p-company {
-  display: block;
-}
-
-.info-inner .p-name {
-  font-family: 'PT Sans', sans-serif;
-  font-size: 18px;
-  color: #252525;
-}
-
-.info-inner .p-company {
-  font-family: 'Lato', sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #FFE11B;
-}
-
-.a-size {
-  -webkit-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  position: absolute;
-  width: 100%;
-  bottom: -20px;
-  font-family: 'PT Sans', sans-serif;
-  color: #828282;
-  opacity: 0;
-}
-
-.a-size .size {
-  color: #252525;
-}
-
-.cart {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-}
-
-.cart .price {
-  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-delay: 100ms;
-  -o-transition-delay: 100ms;
-  transition-delay: 100ms;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  color: #252525;
-}
-
-.cart .add-to-cart {
-  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-delay: 100ms;
-  -o-transition-delay: 100ms;
-  transition-delay: 100ms;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 110%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.cart .add-to-cart .txt {
-  font-size: 12px;
-  color: #fff;
-  letter-spacing: 0.045em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-* {
-  box-sizing: border-box;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
-  </style>
-  <h2>Hello {{request.user}} !</h2>
-  {%if products%}
-  <h3 style="text-align:center; color:yellow;">{{word}}</h3>
-  <br>
-  <!-- products data starttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt -->
-  <div class="row">
-
-      {% for p in products %}
-      <!-- card1 -->
-      <div class="column">
-      <div class="container page-wrapper" style="width: 450px;">
-        <div class="page-inner">
-          <div class="row">
-            <div class="el-wrapper">
-              <div class="box-up">
-                <img class="img" src="{% static p.product_image.url %}" alt="product pic" height="300px" width="300px">
-                <div class="img-info">
-                  <div class="info-inner">
-                    <span style="background-color:#08050a; color:yellow;" class="p-company">{{p.name}} msg={{msg}}</span>
-
-                  </div>
-                  <div class="a-size">{{p.description}}</div>
+</head>
+<body>
+<!-- banner bg main start -->
+<div class="banner_bg_main">
+    <!-- header top section start -->
+    <div class="container">
+        <div class="header_section_top">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="custom_menu">
+                        <ul>
+                            <li><a href="/my-profile">Hello {{request.user}} !</a></li>
+                            <li><a href="/my-order">My Orders</a></li>
+                            <li><a href="/blogs">Blogs</a></li>
+                            <li><a href="/send-feedback">Send Feedbacks</a></li>
+                            <li><a href="/aboutus">About Us</a></li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
-
-              <div class="box-down">
-                <div class="h-bg">
-                  <div class="h-bg-inner"></div>
-                </div>
-
-                <a class="cart" href="{% url 'add-to-cart' p.id  %}">
-                  <span class="price">Rs.{{p.price}}</span>
-                  <span class="add-to-cart">
-                    <span class="txt">Add in cart</span>
-                  </span>
-                </a>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      </div>
-<!-- card1 end -->
-{% if forloop.counter|divisibleby:"3" %}
     </div>
-    <div class="row">
-          <br><br><br><br><br>
-{% endif %}
+    <br><br><br>
+    <!-- header top section start -->
+    <!-- header section start -->
+    <div class="header_section">
+        <div class="container">
+            <div class="containt_main">
 
-  {% endfor %}
+                <div class="dropdown">
+                    <a href="/logout" class="btn btn-secondary">Logout</a>
+                </div>
+                <div class="main">
+                    <!-- Another variation with a button -->
+                    <form action="/search" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" type="search"
+                                   placeholder="Search for Products and more..." name="query" id="query">
+
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit"
+                                        style="background-color: #f26522; border-color:#f26522 ">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="header_box">
+                    <div class="login_menu">
+                        <ul>
+                            <li><a href="/cart">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span class="padding_10">Cart {{ product_count_in_cart }}</span></a>
+                            </li>
+                            <!--                           <li><a href="#">-->
+                            <!--                              <i class="fa fa-user" aria-hidden="true"></i>-->
+                            <!--                              <span class="padding_10">Ca</span></a>-->
+                            <!--                           </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header section end -->
+    <!-- banner section start -->
+    <div class="banner_section layout_padding">
+        <div class="container">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">One Stop Solution<br>For all your rides!</h1>
+                                <!--                              <div class="buynow_bt"><a href="#">Buy Now</a></div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">One Stop Digital Platform<br>For Motorcycle Enthusiasts</h1>
+                                <!--                              <div class="buynow_bt"><a href="#">Buy Now</a></div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="banner_taital">Better Service<br>Starts Here !</h1>
+                                <!--                              <div class="buynow_bt"><a href="#">Buy Now</a></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- banner section end -->
 </div>
-<!-- products data enddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
+<!-- banner bg main end -->
+<!-- fashion section start -->
+<div class="fashion_section">
+    <div id="main_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <h1 class="fashion_taital">Featured Items</h1>
+                    <div class="fashion_section_2">
+                        <div class="row">
+                            {%if products%}
+                            {% for p in products %}
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="box_main">
+                                    <h4 class="shirt_text">{{p.name}}</h4>
+                                    <div class="a-size" align="center">{{p.description}}</div>
+                                    <br>
+                                    <p class="price_text">Rs. {{p.price}}</span></p>
+                                    <div class="tshirt_img"><img src="{% static p.product_image.url %}"></div>
+                                    <div class="btn_main">
+                                        <a class="cart" href="{% url 'add-to-cart' p.id  %}">
+                                       <span class="add-to-cart" style="text-align: center;">
+                                         <span class="txt" style="font-weight: bold;">Add to cart</span>
+                                       </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if forloop.counter|divisibleby:"3" %}
+                        </div>
+                        <div class="row">
+                            <br><br><br><br><br>
+                            {% endif %}
+
+                            {% endfor %}
+                            {%else%}
+                            <h3 style="text-align:center; color:red;">No Search Found</h3>
+                            {%endif%}
 
 
-{%else%}
-<h3 style="text-align:center; color:yellow;">No Search Found</h3>
-{%endif%}
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- footer section start -->
+<div class="footer_section layout_padding">
+    <div class="container">
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="/sendfeedback">Send Feedbacks</a></li>
+                <li><a href="/">Blogs</a></li>
+            </ul>
+        </div>
+        <div class="location_main">9823456789, 9803214569 <br> <a href="#">info@bikesmart.com</a></div>
+    </div>
+</div>
+<!-- footer section end -->
+<!-- copyright section start -->
+<div class="copyright_section">
+    <div class="container">
+        <p class="copyright_text">Copyright @{% load copyrighttags %}
+            {% getCopyrightYears %} All Right Reserved. <a
+                    href="https://www.facebook.com/profile.php?id=100091049813458">BikesMart</a></p>
+    </div>
+</div>
+<!-- copyright section end -->
+<!-- Javascript files-->
+<script src="{% static 'admin/js/jquery.min.js' %}"></script>
+<script src="{% static 'admin/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'admin/js/jquery-3.0.0.min.js' %}"></script>
+<script src="{% static 'admin/js/plugin.js' %}"></script>
+<!-- sidebar -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
 <script>
-  console.log('===============')
-      console.log('{{msg}}')
-  console.log('===============')
+         function openNav() {
+           document.getElementById("mySidenav").style.width = "250px";
+         }
+
+         function closeNav() {
+           document.getElementById("mySidenav").style.width = "0";
+         }
 
 </script>
-<br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
 
 
-
-
-{% endblock content %}
+</html>

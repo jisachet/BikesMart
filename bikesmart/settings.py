@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ecom',
     'widget_tweaks',
+    'copyright',
+    'bikesmart',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,5 @@ LOGIN_REDIRECT_URL='/afterlogin'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+COPY_START_YEAR = 2023

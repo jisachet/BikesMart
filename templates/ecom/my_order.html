@@ -1,169 +1,138 @@
-{% extends 'ecom/customer_base.html' %}
+<!DOCTYPE html>
 {% load static %}
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=devicx`e-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>BikesMart</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="static/admin/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="static/admin/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif"/>
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  -->
+    <!-- owl stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesoeet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+          media="screen">
+    <style>
+   .add-to-cart {
+      text-align: center;
+   }
 
-{% block content %}
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<style media="screen">
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+   .add-to-cart .txt {
+      font-weight: bold;
+   }
+     .details-box {
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
 
-body {
-    background-color: #8C9EFF;
-    font-family: 'Open Sans', serif
-}
 
-.container {
-    margin-top: 0px;
-    margin-bottom: 0px
-}
 
-.card {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 0.10rem
-}
+    </style>
 
-.card-header:first-child {
-    border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0
-}
 
-.card-header {
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: #fff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
-}
+</head>
+<body>
+<!-- banner bg main start -->
+<div class="banner_bg_main">
+    <!-- header top section start -->
+    <div class="container">
+        <div class="header_section_top">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="custom_menu">
+                        <ul>
+                            <li><a href="/my-profile">Hello {{request.user}} !</a></li>
+                            <li><a href="/">BikesMart</a></li>
+                            <li><a href="/my-order">My Orders</a></li>
+                            <li><a href="/blogs">Blogs</a></li>
+                            <li><a href="/send-feedback">Send Feedbacks</a></li>
+                            <li><a href="/aboutus">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <!-- header top section start -->
+    <!-- header section start -->
+    <div class="header_section">
+        <div class="container">
+            <div class="containt_main">
 
-.track {
-    position: relative;
-    background-color: #ddd;
-    height: 7px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin-bottom: 60px;
-    margin-top: 50px
-}
+                <div class="dropdown">
+                    <a href="/logout" class="btn btn-secondary">Logout</a>
+                </div>
+                <div class="main">
+                    <!-- Another variation with a button -->
+                    <form action="/search" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" type="search"
+                                   placeholder="Search for Products and more..." name="query" id="query">
 
-.track .step {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    width: 25%;
-    margin-top: -18px;
-    text-align: center;
-    position: relative
-}
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit"
+                                        style="background-color: #f26522; border-color:#f26522 ">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="header_box">
+                    <div class="login_menu">
+                        <ul>
+                            <li><a href="/cart">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span class="padding_10">Cart {{ product_count_in_cart }}</span></a>
+                            </li>
+                            <!--                           <li><a href="#">-->
+                            <!--                              <i class="fa fa-user" aria-hidden="true"></i>-->
+                            <!--                              <span class="padding_10">Ca</span></a>-->
+                            <!--                           </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header section end -->
+    <br><br><br>
+    <!--    <h3 style="text-align:center;">Thank You For Your Order <strong>{{request.user}}</strong> !</h3>-->
+</div>
+</body>
+<br><br>
 
-.track .step.active:before {
-    background: #FF5722
-}
-
-.track .step::before {
-    height: 7px;
-    position: absolute;
-    content: "";
-    width: 100%;
-    left: 0;
-    top: 18px
-}
-
-.track .step.active .icon {
-    background: #ee5435;
-    color: #fff
-}
-
-.track .icon {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    position: relative;
-    border-radius: 100%;
-    background: #ddd
-}
-
-.track .step.active .text {
-    font-weight: 400;
-    color: #000
-}
-
-.track .text {
-    display: block;
-    margin-top: 7px
-}
-
-.itemside {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%
-}
-
-.itemside .aside {
-    position: relative;
-    -ms-flex-negative: 0;
-    flex-shrink: 0
-}
-
-.img-sm {
-    width: 80px;
-    height: 80px;
-    padding: 7px
-}
-
-ul.row,
-ul.row-sm {
-    list-style: none;
-    padding: 0
-}
-
-.itemside .info {
-    padding-left: 15px;
-    padding-right: 7px
-}
-
-.itemside .title {
-    display: block;
-    margin-bottom: 5px;
-    color: #212529
-}
-
-p {
-    margin-top: 0;
-    margin-bottom: 1rem
-}
-
-.btn-warning {
-    color: #ffffff;
-    background-color: #ee5435;
-    border-color: #ee5435;
-    border-radius: 1px
-}
-
-.btn-warning:hover {
-    color: #ffffff;
-    background-color: #ff2b00;
-    border-color: #ff2b00;
-    border-radius: 1px
-}
-
-</style>
-<br>
-<h3 style="text-align:center;">Thank You For Your Order  <strong>{{request.user}}</strong> !</h3> <br><br>
 <div class="container">
-    <header class="card-header" style="text-align:center;"> My Orders / Tracking </header>
+
+    <header class="card-header" style="text-align:center;"> My Orders / Tracking</header>
 
     {% for products,order in data %}
 
@@ -171,23 +140,28 @@ p {
         <div class="card-body">
             <ul class="row" style="margin-left:20px;margin-top:20px;">
                 <li class="col-md-4">
-                  <figure class="itemside mb-3">
-                    {%for product in products%}
-                      <div class="aside"><img src="{% static product.product_image.url %}" class="img-sm border"></div>
-                      <figcaption class="info align-self-center">
+                    <figure class="itemside mb-3">
+                        {%for product in products%}
+                        <div class="aside"><img src="{% static product.product_image.url %}" class="img-sm border">
+                        </div>
+                        <figcaption class="info align-self-center">
 
-                          <p class="title"><strong>Name : </strong>{{product.name}} <br> <strong>Description : </strong>{{product.description}}</p> <span class="text-muted"><strong>Price : </strong>{{product.price}} </span>
+                            <p class="title"><strong>Name : </strong>{{product.name}} <br> <strong>Description
+                                : </strong>{{product.description}}</p> <span
+                                class="text-muted"><strong>Price : </strong>{{product.price}} </span>
 
-                      </figcaption>
+                        </figcaption>
 
-                  </figure>
+                    </figure>
                 </li>
                 <li class="col-md-4">
-                    <div class="col"> <strong>Shipment Address:</strong> <br> {{order.address}}</div>
+                    <div class="col"><strong>Shipment Address:</strong> <br> {{order.address}}</div>
                 </li>
                 <li class="col-md-4">
-                    <div class="col"> <strong>Status:</strong> <br> {{order.status}} </div> <br>
-                    <h4><a style="text-decoration:none; color:blue;" href="{% url 'download-invoice' order.id product.id  %}" >Download Invoice</a></h4>
+                    <div class="col"><strong>Status:</strong> <br> {{order.status}}</div>
+                    <br>
+                    <h4><a style="text-decoration:none; color:blue;"
+                           href="{% url 'download-invoice' order.id product.id  %}">Download Invoice</a></h4>
                 </li>
                 {%endfor%}
             </ul>
@@ -195,31 +169,68 @@ p {
 
             <div class="track">
                 {%if order.status == 'Pending' %}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-frown-o"></i> </span> <span
+                        class="text">Order Pending</span>
+                </div>
+                <div class="step "><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                          class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span>
+                </div>
+                <div class="step "><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                          class="fa fa-truck"></i> </span> <span class="text"> On the way </span>
+                </div>
+                <div class="step "><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                          class="fa fa-home"></i> </span> <span
+                        class="text">Delivered</span></div>
                 {%elif order.status == 'Order Confirmed' %}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-frown-o"></i> </span> <span
+                        class="text">Order Pending</span>
+                </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span>
+                </div>
+                <div class="step "><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                          class="fa fa-truck"></i> </span> <span class="text"> On the way </span>
+                </div>
+                <div class="step "><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                          class="fa fa-home"></i> </span> <span
+                        class="text">Delivered</span></div>
                 {%elif order.status == 'Out for Delivery'%}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-frown-o"></i> </span> <span
+                        class="text">Order Pending</span>
+                </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span>
+                </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-truck"></i> </span> <span class="text"> On the way </span>
+                </div>
+                <div class="step "><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                          class="fa fa-home"></i> </span> <span
+                        class="text">Delivered</span></div>
                 {%else%}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-frown-o"></i> </span> <span
+                        class="text">Order Pending</span>
+                </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span>
+                </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-truck"></i> </span> <span class="text"> On the way </span>
+                </div>
+                <div class="step active"><span class="icon"> <i style="padding-top:5px; padding-right:20px;"
+                                                                class="fa fa-home"></i> </span> <span class="text">Delivered</span>
+                </div>
                 {%endif%}
             </div>
 
         </div>
-    </article><br>
+    </article>
+    <br>
     {%endfor%}
 </div>
 <br><br><br><br><br>
-{% endblock content %}
+

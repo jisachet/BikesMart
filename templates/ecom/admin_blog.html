@@ -1,0 +1,55 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {%include 'ecom/admin_dashboard_cards.html'%}
+  <br><br><br><br><br>
+</head>
+<br><br><br>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-12">
+     <div class="panel panel-primary" >
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title" style="text-align:center;">All blogs</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+          <thead>
+            <tr>
+              <th class="text-center">Author</th>
+              <th class="text-center">Title</th>
+<!--              <th>Content</th>-->
+<!--              <th>Image</th>-->
+              <th class="text-center">Created date</th>
+              <th class="text-center">Delete</th>
+
+            </tr>
+          </thead>
+      <!-- p for product, c for customer-->
+      {% for blog in blogs %}
+            <tr>
+                <td class="text-center"> {{blog.author}}</td>
+                <td class="text-center"> {{blog.title}}</td>
+<!--                <td> {{blog.content}}</td>-->
+
+<!--                <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>-->
+                <td class="text-center">{{blog.created_at}}</td>
+                <td class="text-center"><a class="btn btn-danger btn-xs" href="{% url 'delete_blog' blog.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+
+
+            </tr>
+      {% endfor %}
+      </table>
+     </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
